@@ -74,22 +74,21 @@ export default defineType({
           title: 'Text',
           type: 'array',
           of: [
-            defineArrayMember({
-              lists: [],
+            {
+              type: 'block',
+              styles: [
+                {title: 'Normal', value: 'normal'},
+                {title: 'H1', value: 'h1'},
+                {title: 'H2', value: 'h2'},
+                {title: 'H3', value: 'h3'},
+              ],
               marks: {
                 decorators: [
-                  {
-                    title: 'Italic',
-                    value: 'em',
-                  },
-                  {
-                    title: 'Strong',
-                    value: 'strong',
-                  },
+                  { title: "Strong", value: "strong" },
+                  { title: "Emphasis", value: "em" },
                 ],
               },
-              type: 'block',
-            }),
+            }
           ],
           validation: (rule) => rule.max(250).required(),
         }),
@@ -104,9 +103,9 @@ export default defineType({
               title: 'Text',
             }),
             defineField({
-              type: 'url',
-              name: 'href',
-              title: 'Url',
+              type: 'slug',
+              name: 'slug',
+              title: 'Slug',
             }),
           ],
         }),
