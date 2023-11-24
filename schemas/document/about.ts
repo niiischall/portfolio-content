@@ -20,14 +20,20 @@ export default defineType({
       description: 'The heading for about section.',
       fields: [
         defineField({
-          type: 'string',
           name: 'title',
-          title: 'Title',
-        }),
-        defineField({
-          type: 'url',
-          name: 'link',
-          title: 'URL',
+          description: 'Used for heading on the about section',
+          title: 'Text',
+          type: 'array',
+          of: [
+            {
+              type: 'block',
+              styles: [{title: 'H2', value: 'h2'}],
+              marks: {
+                decorators: [{title: 'Strong', value: 'strong'}],
+              },
+            },
+          ],
+          validation: (rule) => rule.max(100).required(),
         }),
       ],
       validation: (rule) => rule.required(),
@@ -73,19 +79,39 @@ export default defineType({
       description: 'This field is the contact of your about section.',
       fields: [
         defineField({
-          type: 'url',
-          name: 'icon',
-          title: 'Icon',
+          type: 'image',
+          name: 'cover',
+          title: 'Cover',
+          options: {
+            hotspot: true,
+          },
+          description:
+            'This image will be used as the logo. This is the image displayed in the about section.',
+          validation: (rule) => rule.required(),
         }),
         defineField({
           type: 'string',
           name: 'text',
           title: 'Text',
         }),
+      ],
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      type: 'object',
+      name: 'cv',
+      title: 'CV',
+      description: 'The link for CV',
+      fields: [
+        defineField({
+          type: 'string',
+          name: 'title',
+          title: 'Title',
+        }),
         defineField({
           type: 'url',
-          name: 'href',
-          title: 'Url',
+          name: 'link',
+          title: 'URL',
         }),
       ],
       validation: (rule) => rule.required(),
