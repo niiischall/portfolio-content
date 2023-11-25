@@ -74,31 +74,6 @@ export default defineType({
     }),
     defineField({
       type: 'object',
-      name: 'contact',
-      title: 'Contact',
-      description: 'This field is the contact of your about section.',
-      fields: [
-        defineField({
-          type: 'image',
-          name: 'cover',
-          title: 'Cover',
-          options: {
-            hotspot: true,
-          },
-          description:
-            'This image will be used as the logo. This is the image displayed in the about section.',
-          validation: (rule) => rule.required(),
-        }),
-        defineField({
-          type: 'string',
-          name: 'text',
-          title: 'Text',
-        }),
-      ],
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      type: 'object',
       name: 'cv',
       title: 'CV',
       description: 'The link for CV',
