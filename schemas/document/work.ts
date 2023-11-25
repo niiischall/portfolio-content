@@ -17,17 +17,23 @@ export default defineType({
       type: 'object',
       name: 'heading',
       title: 'Heading',
-      description: 'This field is the heading for work section',
+      description: 'The heading for work section.',
       fields: [
         defineField({
-          type: 'string',
           name: 'title',
-          title: 'Title',
-        }),
-        defineField({
-          type: 'url',
-          name: 'link',
-          title: 'Link',
+          description: 'Used for heading on the about section',
+          title: 'Text',
+          type: 'array',
+          of: [
+            {
+              type: 'block',
+              styles: [{title: 'H2', value: 'h2'}],
+              marks: {
+                decorators: [{title: 'Strong', value: 'strong'}],
+              },
+            },
+          ],
+          validation: (rule) => rule.max(100).required(),
         }),
       ],
       validation: (rule) => rule.required(),
@@ -57,41 +63,34 @@ export default defineType({
             }),
             defineField({
               type: 'object',
-              name: 'org',
-              title: 'Organization',
+              name: 'link',
+              title: 'Link',
+              description: 'Used for link of the organization.',
               fields: [
                 defineField({
-                  type: 'object',
-                  name: 'link',
-                  title: 'Link',
-                  description: 'Used for link of the organization.',
-                  fields: [
-                    defineField({
-                      type: 'string',
-                      name: 'name',
-                      title: 'Name',
-                    }),
-                    defineField({
-                      type: 'url',
-                      name: 'href',
-                      title: 'URL',
-                    }),
-                  ],
-                }),
-                defineField({
-                  type: 'duration',
-                  name: 'duration',
-                  title: 'Duration',
-                  description: 'Used for duration of the experience.',
-                }),
-                defineField({
                   type: 'string',
-                  name: 'description',
-                  title: 'Description',
-                  description: 'Used for describing the experience.',
-                  validation: (rule) => rule.max(1000).required(),
+                  name: 'name',
+                  title: 'Name',
+                }),
+                defineField({
+                  type: 'url',
+                  name: 'href',
+                  title: 'URL',
                 }),
               ],
+            }),
+            defineField({
+              type: 'duration',
+              name: 'duration',
+              title: 'Duration',
+              description: 'Used for duration of the experience.',
+            }),
+            defineField({
+              type: 'string',
+              name: 'description',
+              title: 'Description',
+              description: 'Used for describing the experience.',
+              validation: (rule) => rule.max(1000).required(),
             }),
             defineField({
               type: 'image',
