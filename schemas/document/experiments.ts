@@ -17,17 +17,23 @@ export default defineType({
       type: 'object',
       name: 'heading',
       title: 'Heading',
-      description: 'The heading for experiments',
+      description: 'The heading for experiments section.',
       fields: [
         defineField({
-          type: 'string',
-          name: 'text',
+          name: 'title',
+          description: 'Used for heading on the about section',
           title: 'Text',
-        }),
-        defineField({
-          type: 'url',
-          name: 'href',
-          title: 'Link',
+          type: 'array',
+          of: [
+            {
+              type: 'block',
+              styles: [{title: 'H2', value: 'h2'}],
+              marks: {
+                decorators: [{title: 'Strong', value: 'strong'}],
+              },
+            },
+          ],
+          validation: (rule) => rule.max(100).required(),
         }),
       ],
       validation: (rule) => rule.required(),
@@ -81,15 +87,6 @@ export default defineType({
                   description: 'This field is the link url of your experiment section.',
                 }),
               ],
-            }),
-            defineField({
-              type: 'image',
-              name: 'cover',
-              title: 'Image',
-              options: {
-                hotspot: true,
-              },
-              description: 'This image will be used as the cover image for the experiment.',
             }),
           ],
         }),
