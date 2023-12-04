@@ -63,5 +63,29 @@ export default defineType({
       ],
       validation: (rule) => rule.max(250).required(),
     }),
+    defineField({
+      type: 'object',
+      name: 'link',
+      title: 'Link',
+      description: 'This field is the link of your contact section.',
+      fields: [
+        defineField({
+          type: 'text',
+          name: 'text',
+          title: 'Text',
+          description: 'This field is the link text of your contact section.',
+        }),
+        defineField({
+          type: 'url',
+          name: 'href',
+          title: 'Url',
+          description: 'This field is the link url of your contact section.',
+          validation: (Rule) =>
+            Rule.uri({
+              scheme: ['http', 'https', 'mailto', 'tel'],
+            }),
+        }),
+      ],
+    }),
   ],
 })
