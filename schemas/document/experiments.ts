@@ -69,6 +69,15 @@ export default defineType({
               description: 'This field is the body of your experiment section.',
             }),
             defineField({
+              type: 'image',
+              name: 'image',
+              title: 'Image',
+              options: {
+                hotspot: true,
+              },
+              description: 'This image will be used as the cover image for the experiment.',
+            }),
+            defineField({
               type: 'object',
               name: 'link',
               title: 'Link',
