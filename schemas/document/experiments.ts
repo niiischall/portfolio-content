@@ -84,12 +84,6 @@ export default defineType({
               description: 'This field is the link of your experiment section.',
               fields: [
                 defineField({
-                  type: 'text',
-                  name: 'text',
-                  title: 'Text',
-                  description: 'This field is the link text of your experiment section.',
-                }),
-                defineField({
                   type: 'url',
                   name: 'href',
                   title: 'Url',
