@@ -80,10 +80,22 @@ export default defineType({
               ],
             }),
             defineField({
-              type: 'duration',
+              type: 'object',
               name: 'duration',
               title: 'Duration',
               description: 'Used for duration of the experience.',
+              fields: [
+                defineField({
+                  type: 'string',
+                  name: 'start',
+                  title: 'Start',
+                }),
+                defineField({
+                  type: 'string',
+                  name: 'end',
+                  title: 'End',
+                }),
+              ],
             }),
             defineField({
               type: 'string',
