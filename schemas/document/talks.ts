@@ -16,17 +16,23 @@ export default defineType({
       type: 'object',
       name: 'heading',
       title: 'Heading',
-      description: 'The heading for talks',
+      description: 'The heading for experiments section.',
       fields: [
         defineField({
-          type: 'string',
           name: 'title',
-          title: 'Title',
-        }),
-        defineField({
-          type: 'url',
-          name: 'link',
-          title: 'Link',
+          description: 'Used for heading on the about section',
+          title: 'Text',
+          type: 'array',
+          of: [
+            {
+              type: 'block',
+              styles: [{title: 'H2', value: 'h2'}],
+              marks: {
+                decorators: [{title: 'Strong', value: 'strong'}],
+              },
+            },
+          ],
+          validation: (rule) => rule.max(100).required(),
         }),
       ],
       validation: (rule) => rule.required(),
